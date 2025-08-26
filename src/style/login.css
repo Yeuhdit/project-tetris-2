@@ -1,0 +1,147 @@
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .confetti {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      top: 0; left: 0;
+    }
+
+    .confetti span {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      opacity: 0.8;
+      animation: float 8s infinite ease-in-out;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 2px rgba(255, 93, 162, 0.8));
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(120vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.3);
+      padding: 2rem 3rem;
+      border-radius: 30px;
+      box-shadow: 0 12px 40px rgba(255, 120, 150, 0.4);
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      z-index: 1;
+  background: rgba(255, 255, 255, 0.5); /* חצי שקוף */
+      animation: popIn 0.9s ease-out;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #ff5da2;
+      text-shadow: 0 1px 4px #ffffffaa;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.4rem;
+      font-weight: bold;
+      color: #6d004c;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      background-color: #fff;
+      box-shadow: 0 0 8px #ffc9de88;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 12px #ff69b4cc;
+    }
+
+    button {
+      background: linear-gradient(to right, #ff85b3, #ff5da2);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.4s;
+      box-shadow: 0 4px 15px #ff91c3aa;
+      width: 100%;
+      margin-top: 0.6rem;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: linear-gradient(to right, #ffa6c9, #ff69b4);
+    }
+
+    /* כפתור הוראות מיוחד */
+    #instructions-btn {
+      background: linear-gradient(45deg, #ff5da2, #ff9a9e);
+      padding: 15px 0;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 0 15px #ff5da2cc;
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    #instructions-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 70%);
+      transform: rotate(45deg);
+      transition: all 0.7s ease;
+      opacity: 0;
+    }
+
+    #instructions-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff5da2ff;
+    }
+
+    #instructions-btn:hover::before {
+      opacity: 1;
+      top: -30%;
+      left: -30%;
+    }

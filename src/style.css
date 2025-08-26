@@ -1,0 +1,7 @@
+  * { box-sizing: border-box; }
+
+body{
+     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+     font-family: 'Varela Round', sans-serif;
+     direction: rtl;
+}

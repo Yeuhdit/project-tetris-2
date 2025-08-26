@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page - Tetris Game</title>
+      <link rel="icon" type="image/x-icon" href="../image/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style/login.css">
+
+  <script src="../js/login.js" defer></script>
+</head>
+<body>
+  <!-- Endless confetti -->
+  <div class="confetti" id="confetti-container"></div>
+
+  <!-- Login box -->
+  <main class="login-container">
+    <h1>Welcome to the Tetris Game!</h1>
+    <form id="login-form">
+      <label for="username">What's your name?</label>
+      <input type="text" id="username" name="username" placeholder="Enter your name..." required />
+
+      <label for="level">Which level do you choose?</label>
+      <select id="level" name="level">
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+
+      <div id="error-msg" class="error-box"></div>
+
+      <button id="instructions-btn" type="button">🎮 Game Instructions</button>
+      <button type="submit">Let's Start!</button>
+
+    </form>
+  </main>
+
+  <script>
+    // Login form
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const level = document.getElementById('level').value;
+      const errorBox = document.getElementById('error-msg');
+
+      // Reset error box
+      errorBox.style.display = 'none';
+      errorBox.textContent = '';
+
+      if (!username) {
+        errorBox.textContent = 'Please enter a name';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+    if (username.includes("!") || username.indexOf("!") !== -1) {
+  errorBox.textContent = 'The name cannot contain "!"';
+  errorBox.style.display = 'block';
+  return;
+}
+
+
+      const userData = { username, level };
+      localStorage.setItem('gameUser', JSON.stringify(userData));
+      window.location.href = '/src/pages/tetris.html';
+    });
+
+    // Game instructions button
+    document.getElementById('instructions-btn').addEventListener('click', () => {
+      window.location.href = '/src/pages/tetris-instructions.html';
+    });
+
+    // Endless confetti
+    const confettiContainer = document.getElementById('confetti-container');
+
+    function createConfetti() {
+      const colors = ['#ff5da2', '#ffd3e0', '#ffe0f7', '#ff9a9e', '#fbc2eb'];
+      const span = document.createElement('span');
+      const size = Math.random() * 10 + 6;
+      const left = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const duration = Math.random() * 5 + 5;
+
+      span.style.left = `${left}%`;
+      span.style.width = `${size}px`;
+      span.style.height = `${size}px`;
+      span.style.background = colors[Math.floor(Math.random() * colors.length)];
+      span.style.animationDelay = `${delay}s`;
+      span.style.animationDuration = `${duration}s`;
+
+      confettiContainer.appendChild(span);
+
+      setTimeout(() => {
+        confettiContainer.removeChild(span);
+      }, (duration + delay) * 1000);
+    }
+
+    setInterval(createConfetti, 150);
+  </script>
+</body>
+</html>
