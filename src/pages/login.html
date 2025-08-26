@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login Page - Tetris Game</title>
-      <link rel="icon" type="image/x-icon" href="../image/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../image/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style/login.css">
 
   <script src="../js/login.js" defer></script>
 </head>
+
 <body>
   <!-- Endless confetti -->
   <div class="confetti" id="confetti-container"></div>
@@ -53,11 +55,11 @@
         return;
       }
 
-    if (username.includes("!") || username.indexOf("!") !== -1) {
-  errorBox.textContent = 'The name cannot contain "!"';
-  errorBox.style.display = 'block';
-  return;
-}
+      if (username.includes("!") || username.indexOf("!") !== -1) {
+        errorBox.textContent = 'The name cannot contain "!"';
+        errorBox.style.display = 'block';
+        return;
+      }
 
 
       const userData = { username, level };
@@ -98,4 +100,5 @@
     setInterval(createConfetti, 150);
   </script>
 </body>
+
 </html>
